@@ -2,8 +2,6 @@ var redbird = require("redbird");
 const httpStart = require("./http-ipc");
 
 
-
-
 var RecrutabilityMain = function (host, url, req) {
   if (/(.*\.)?recrutability\.com/.test(host)) {
     return {
