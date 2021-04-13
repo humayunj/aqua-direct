@@ -38,7 +38,7 @@ proxy.register("hot.recrutability.com", "http://127.0.0.1:3000", {
   ssl: {
     letsencrypt: {
       email: "support@recrutability.com",
-      // production: true,
+      production: true,
     },
   },
 });
