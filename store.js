@@ -1,3 +1,5 @@
+var fs = require("fs");
+
 let pairs = [];
 
 const TARGET = "http://127.0.0.1:3000";
@@ -9,6 +11,13 @@ const OPTS = {
     },
   },
 };
+
+function loadPairs() {
+  var store = JSON.parse(fs.readFileSync("store.json", "utf8"));
+  for (let pair of store.pairs) {
+    push(pair.domain, pair.username);
+  }
+}
 
 function makeURL(username) {
   return `${username}.recrutability.me`;
@@ -38,7 +47,7 @@ function push(domain, username) {
   }
   pairs.push([domain, username]);
 
-  this.register(domain, "http://127.0.0.1:3000",OPTS);
+  this.register(domain, "http://127.0.0.1:3000", OPTS);
 }
 
 function removeDomain(domain) {
@@ -53,7 +62,7 @@ var CustomDomainsResolver = function (host, url, req) {
   let u = getUsername(host);
   if (u) {
     req.headers.host = makeURL(u);
-    req.headers['X-CUSTOM-DOMAIN'] = host;
+    req.headers["X-CUSTOM-DOMAIN"] = host;
     return {
       url: "http://127.0.0.1:3000",
     };
@@ -63,6 +72,7 @@ CustomDomainsResolver.priority = -1;
 
 function store(proxy) {
   proxy.addResolver(CustomDomainsResolver);
+  loadPairs();
 
   return {
     getDomain,
