@@ -17,21 +17,21 @@ var proxy = redbird({
 });
 
 proxy.register("recrutability.com", "http://127.0.0.1:3000", {
-  // ssl: {
-  //   letsencrypt: {
-  //     email: "humayunjaved23@gmail.com",
-  //     production: true,
-  //   },
-  // },
+  ssl: {
+    letsencrypt: {
+      email: "support@recrutability.com",
+      production: true,
+    },
+  },
 });
 
 proxy.register("www.recrutability.com", "http://127.0.0.1:3000", {
-  // ssl: {
-  //   letsencrypt: {
-  //     email: "humayunjaved23@gmail.com",
-  //     production: true,
-  //   },
-  // },
+  ssl: {
+    letsencrypt: {
+      email: "support@recrutability.com",
+      production: true,
+    },
+  },
 });
 
 proxy.register("hot.recrutability.com", "http://127.0.0.1:3000", {

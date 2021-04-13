@@ -38,14 +38,7 @@ function push(domain, username) {
   }
   pairs.push([domain, username]);
 
-  this.register(domain, "http://127.0.0.1:3000", {
-    // ssl: {
-    //   letsencrypt: {
-    //     email: "humayunjaved23@gmail.com",
-    //     production: true,
-    //   },
-    // },
-  });
+  this.register(domain, "http://127.0.0.1:3000",OPTS);
 }
 
 function removeDomain(domain) {
