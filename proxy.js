@@ -20,6 +20,8 @@ var RecrutabilityMain = function (host, url, req) {
   }
 };
 
+RecrutabilityMain.priority = 100;
+
 
 var proxy = redbird({
   port: 80,
