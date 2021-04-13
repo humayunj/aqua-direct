@@ -33,6 +33,16 @@ proxy.register("www.recrutability.com", "http://127.0.0.1:3000", {
   //   },
   // },
 });
+
+proxy.register("hot.recrutability.com", "http://127.0.0.1:3000", {
+  ssl: {
+    letsencrypt: {
+      email: "support@recrutability.com",
+      // production: true,
+    },
+  },
+});
+
 // proxy.register("localhost", "http://127.0.0.1:3000", {
 // });
 httpStart(proxy);
