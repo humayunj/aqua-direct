@@ -12,10 +12,10 @@ const OPTS = {
   },
 };
 
-function loadPairs() {
+function loadPairs(_push) {
   var store = JSON.parse(fs.readFileSync("store.json", "utf8"));
   for (let pair of store.pairs) {
-    push(pair.domain, pair.username);
+    _push(pair.domain, pair.username);
   }
 }
 
@@ -72,7 +72,7 @@ CustomDomainsResolver.priority = -1;
 
 function store(proxy) {
   proxy.addResolver(CustomDomainsResolver);
-  loadPairs();
+  loadPairs(push.bind(proxy));
 
   return {
     getDomain,
