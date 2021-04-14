@@ -1,7 +1,6 @@
 var redbird = require("redbird");
 const httpStart = require("./http-ipc");
 
-const TARGET = "http://10.122.0.2";
 
 
 var proxy = redbird({
@@ -12,6 +11,7 @@ var proxy = redbird({
   },
   ssl: {
     // http2: true,
+    redirect:true,
     port: 443, // SSL port used to serve registered https routes with LetsEncrypt certificate.
   },
 });

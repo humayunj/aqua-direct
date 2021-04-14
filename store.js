@@ -5,6 +5,7 @@ const TARGET = "http://10.122.0.2:3000";
 
 const OPTS = {
   ssl: {
+    redirect:true,
     letsencrypt: {
       email: "support@recrutability.com",
       production: true,
