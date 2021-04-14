@@ -33,11 +33,17 @@ function removeExisting(domain, username) {
   );
 }
 
+function removeExistingUsername(username) {
+  return pairs.filter(([_domain, _username]) => _username !== username);
+}
+
 function addPair(domain, username) {
   pairs = removeExisting(domain, username);
   pairs.push([domain, username]);
-  fs.appendFile("store.json", domain + "," + username + "\n", (err) =>
-    console.error(err)
+  fs.appendFile(
+    "store.csv",
+    domain + "," + username + "\n",
+    (err) => err && console.error(err)
   );
 }
 function removePair(domain, username) {
@@ -46,7 +52,7 @@ function removePair(domain, username) {
   for (let p of pairs) {
     s = p[0] + "," + p[1] + "\n";
   }
-  fs.writeFile("store.csv", s, (err) => console.error(err));
+  fs.writeFile("store.csv", s, (err) => err & console.error(err));
 }
 
 function makeURL(username) {
@@ -104,9 +110,9 @@ function store(proxy) {
   return {
     getDomain,
     push: (domain, username) => {
-      if (getDomain(username)) {
-        return console.warn("Domain " + domain + " already registered");
-      }
+      let _domain = getDomain(username);
+      if (_domain) removeDomain.bind(proxy)(_domain);
+
       _push(domain, username);
     },
     removeDomain: removeDomain.bind(proxy),
