@@ -10,7 +10,7 @@ const OPTS = {
     // redirect: true,
     letsencrypt: {
       email: "support@recrutability.com",
-      production: false,
+      production: true,
     },
   },
 };
