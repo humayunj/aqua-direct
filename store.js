@@ -1,8 +1,8 @@
 var fs = require("fs");
 
 let pairs = [];
+const TARGET = "http://10.122.0.2:3000";
 
-const TARGET = "http://127.0.0.1:3000";
 const OPTS = {
   ssl: {
     letsencrypt: {
@@ -47,7 +47,7 @@ function push(domain, username) {
   }
   pairs.push([domain, username]);
 
-  this.register(domain, "http://127.0.0.1:3000", OPTS);
+  this.register(domain, TARGET, OPTS);
 }
 
 function removeDomain(domain) {
@@ -64,7 +64,7 @@ var CustomDomainsResolver = function (host, url, req) {
     req.headers.host = makeURL(u);
     req.headers["X-CUSTOM-DOMAIN"] = host;
     return {
-      url: "http://127.0.0.1:3000",
+      url: TARGET,
     };
   }
 };
