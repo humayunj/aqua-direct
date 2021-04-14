@@ -34,13 +34,13 @@ function httpStart(proxy) {
     console.log("HTTP IPC Listening on ", port);
   });
 
-  setTimeout(() => {
-    store.removeDomain("www.humayun.io");
-  }, 4000);
+  // setTimeout(() => {
+  //   store.removeDomain("www.humayun.io");
+  // }, 4000);
 
-  setTimeout(() => {
-    store.push("www.humayun.io", "humayun");
-  }, 2000);
+  // setTimeout(() => {
+  //   store.push("www.humayun.io", "humayun");
+  // }, 2000);
 
   return app;
 }
