@@ -5,17 +5,7 @@ const bodyParser = require("body-parser");
 
 function httpStart(proxy) {
   const app = express();
-  const store = Store({
-    register: (domain, cb) => {
-      console.log("REG: " + domain);
-    },
-    unregister: (domain) => {
-      console.log("UNREG: " + domain);
-    },
-    addResolver: (r) => {
-      console.log("Add RESOLVER");
-    },
-  });
+  const store = Store(proxy);
 
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
@@ -44,14 +34,13 @@ function httpStart(proxy) {
     console.log("HTTP IPC Listening on ", port);
   });
 
+  setTimeout(() => {
+    store.removeDomain("www.humayun.io");
+  }, 4000);
 
-  setTimeout(()=>{
-    store.removeDomain('www.humayun.io')
-  },4000);
-
-  setTimeout(()=>{
-    store.push('www.humayun.io','humayun');
-  },2000);
+  setTimeout(() => {
+    store.push("www.humayun.io", "humayun");
+  }, 2000);
 
   return app;
 }
