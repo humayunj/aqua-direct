@@ -60,7 +60,7 @@ function removeDomain(domain) {
   this.unregister(domain, TARGET);
 }
 var CustomDomainsResolver = function (host, url, req) {
-  if (u.startsWith("http://"))
+  if (url.startsWith("http://"))
     // http protocol? redbird will redirect
     return url;
 
@@ -73,7 +73,7 @@ var CustomDomainsResolver = function (host, url, req) {
     };
   }
 };
-CustomDomainsResolver.priority = -1;
+CustomDomainsResolver.priority = 1;
 
 function store(proxy) {
   proxy.addResolver(CustomDomainsResolver);
