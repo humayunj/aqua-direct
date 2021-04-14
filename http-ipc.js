@@ -5,14 +5,24 @@ const bodyParser = require("body-parser");
 
 function httpStart(proxy) {
   const app = express();
-  const store = Store(proxy);
+  const store = Store({
+    register: (domain, cb) => {
+      console.log("REG: " + domain);
+    },
+    unregister: (domain) => {
+      console.log("UNREG: " + domain);
+    },
+    addResolver: (r) => {
+      console.log("Add RESOLVER");
+    },
+  });
 
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
 
   app.put("/domains", (req, res, next) => {
     const { domain, username } = req.query;
-    console.log(domain,username);
+    console.log(domain, username);
     store.push(domain, username);
 
     res.json({ ok: true });
@@ -33,6 +43,15 @@ function httpStart(proxy) {
   app.listen(port, () => {
     console.log("HTTP IPC Listening on ", port);
   });
+
+
+  setTimeout(()=>{
+    store.removeDomain('www.humayun.io')
+  },4000);
+
+  setTimeout(()=>{
+    store.push('www.humayun.io','humayun');
+  },2000);
 
   return app;
 }
