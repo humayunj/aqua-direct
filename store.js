@@ -20,7 +20,7 @@ function loadPairs(_push) {
 }
 
 function makeURL(username) {
-  return `http://${username}.recrutability.com`;
+  return `${username}.recrutability.com`;
 }
 
 function getDomain(username) {
