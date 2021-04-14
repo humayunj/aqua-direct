@@ -1,7 +1,7 @@
 var redbird = require("redbird");
 const httpStart = require("./http-ipc");
 
-const TARGET = "http://10.122.0.2:3000";
+const TARGET = "http://10.122.0.2";
 
 
 var proxy = redbird({
