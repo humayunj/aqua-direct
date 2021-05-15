@@ -14,6 +14,7 @@ const OPTS = {
     },
   },
   onRequest: (req, res, target) => {
+    console.log("REQ");
     if (!req.connection.encrypted) {
       console.log("Redirect:", `https://${req.headers.host}${url}`);
       res.writeHead(302, {
@@ -120,7 +121,7 @@ var CustomDomainsResolver = function (host, url, req) {
     };
   }
 };
-CustomDomainsResolver.priority = 0;
+CustomDomainsResolver.priority = 1;
 
 function store(proxy) {
   proxy.addResolver(CustomDomainsResolver);
