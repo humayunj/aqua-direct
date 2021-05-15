@@ -96,8 +96,8 @@ var CustomDomainsResolver = function (host, url, req) {
   if (!req.connection.encrypted)
   //   // http protocol? redbird will redirect
   {
-    console.log('Redirect:', `http://${request.headers.host}${url}`);
-    return `http://${request.headers.host}${url}`;
+    console.log('Redirect:', `https://${req.headers.host}${url}`);
+    return `https://${req.headers.host}${url}`;
   }
 
   let u = getUsername(host);
