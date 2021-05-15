@@ -15,13 +15,15 @@ var proxy = redbird({
   bunyan: { level: "debug" },
 });
 
-proxy.register("www.humayun.io", "http://10.122.0.2:3000", {
-  ssl: {
-    // redirect: true,
-    letsencrypt: {
-      email: "support@recrutability.com",
-      production: true,
+setTimeout(() => {
+  proxy.register("www.humayun.io", "http://10.122.0.2:3000", {
+    ssl: {
+      // redirect: true,
+      letsencrypt: {
+        email: "support@recrutability.com",
+        production: true,
+      },
     },
-  },
-});
+  });
+}, 3000);
 httpStart(proxy);
