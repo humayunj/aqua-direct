@@ -13,7 +13,7 @@ function httpStart(proxy) {
   app.put("/domains", (req, res, next) => {
     const { domain, username } = req.query;
     console.log(domain, username);
-    store.push(domain, username);
+    store.push( domain, username);
 
     res.json({ ok: true });
   });
