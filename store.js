@@ -13,6 +13,17 @@ const OPTS = {
       production: true,
     },
   },
+  onRequest: (req, res, target) => {
+    if (!req.connection.encrypted) {
+      console.log("Redirect:", `https://${req.headers.host}${url}`);
+      res.writeHead(302, {
+        Location: `https://${req.headers.host}${url}`,
+      });
+      res.end();
+      return 0;
+    }
+    
+  },
 };
 
 function loadPairs(_push) {
@@ -78,7 +89,7 @@ function getUsername(domain) {
 }
 function push(domain, username) {
   addPair(domain, username);
-  console.log('Registering domain: ',domain);
+  console.log("Registering domain: ", domain);
   this.register(domain, TARGET, OPTS);
 }
 
