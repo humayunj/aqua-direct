@@ -88,9 +88,12 @@ function removeDomain(domain) {
   this.unregister(domain, TARGET);
 }
 var CustomDomainsResolver = function (host, url, req) {
-  // if (req.protocol === "http")
+  console.log('PROTOCOL:');
+  console.log(req.protocol);
+
+  if (req.protocol === "http")
   //   // http protocol? redbird will redirect
-  //   return url;
+    return url;
 
   let u = getUsername(host);
   if (u) {
