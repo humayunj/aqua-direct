@@ -6,7 +6,6 @@ let pairs = [];
 const TARGET = "http://10.122.0.2:3000";
 
 const OPTS = {
-  useTargetHostHeader: true,
   ssl: {
     // redirect: true,
     letsencrypt: {
@@ -94,11 +93,11 @@ var CustomDomainsResolver = function (host, url, req) {
   // console.log(req.connection.encrypted);
 
   // console.log('lOG:',url);
-  // if (!req.connection.encrypted)
+  if (!req.connection.encrypted)
   // //   // http protocol? redbird will redirect
   // {
   //   console.log('Redirect:', `https://${req.headers.host}${url}`);
-  //   return `https://${req.headers.host}${url}`;
+    return url;
   // }
 
   let u = getUsername(host);
