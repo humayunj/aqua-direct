@@ -97,7 +97,7 @@ var CustomDomainsResolver = function (host, url, req) {
   // //   // http protocol? redbird will redirect
   // {
   //   console.log('Redirect:', `https://${req.headers.host}${url}`);
-    return url;
+    return TARGET;
   // }
 
   let u = getUsername(host);
