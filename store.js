@@ -109,7 +109,7 @@ var CustomDomainsResolver = function (host, url, req) {
     };
   }
 };
-CustomDomainsResolver.priority = 1;
+CustomDomainsResolver.priority = -1;
 
 function store(proxy) {
   proxy.addResolver(CustomDomainsResolver);
