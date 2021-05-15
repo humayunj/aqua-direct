@@ -14,6 +14,7 @@ var proxy = redbird({
     // redirect:true,
     port: 443, // SSL port used to serve registered https routes with LetsEncrypt certificate.
   },
+  bunyan: {level:'debug'},
 });
 
 // proxy.register("localhost", "http://127.0.0.1:3000", {
