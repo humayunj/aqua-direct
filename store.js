@@ -6,6 +6,7 @@ let pairs = [];
 const TARGET = "http://10.122.0.2:3000";
 
 const OPTS = {
+  useTargetHostHeader: true,
   ssl: {
     // redirect: true,
     letsencrypt: {
