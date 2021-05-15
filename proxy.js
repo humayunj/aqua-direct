@@ -11,7 +11,7 @@ var proxy = redbird({
   },
   ssl: {
     http2: true,
-    redirect:true,
+    // redirect:true,
     port: 443, // SSL port used to serve registered https routes with LetsEncrypt certificate.
   },
 });
