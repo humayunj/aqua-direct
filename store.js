@@ -78,7 +78,7 @@ function getUsername(domain) {
 }
 function push(domain, username) {
   addPair(domain, username);
-  console.log("Registering domain: ", domain);
+  console.log("Registering domain: ", domain,target);
   this.register(domain, target, OPTS);
 }
 
