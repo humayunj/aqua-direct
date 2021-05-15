@@ -89,9 +89,9 @@ function removeDomain(domain) {
 }
 var CustomDomainsResolver = function (host, url, req) {
   console.log('PROTOCOL:');
-  console.log(req.protocol);
+  console.log(req.connection.encrypted);
 
-  if (req.protocol === "http")
+  if (!req.connection.encrypted)
   //   // http protocol? redbird will redirect
     return url;
 
